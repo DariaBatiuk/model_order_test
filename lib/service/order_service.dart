@@ -45,11 +45,11 @@ class OrderService {
     } on SocketException {
       throw ApiException(message: 'No internet connection');
     } on TimeoutException {
-      throw ApiException(message: 'Try again');
+      throw ApiException(message: 'Request timeout. Please try again');
     } on ApiException {
       rethrow;
     } catch (_) {
-      throw ApiException(message: 'Failed order');
+      throw ApiException(message: 'Failed to create order');
     }
   }
 }
