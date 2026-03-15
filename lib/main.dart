@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:model_order_test/order_screen/order_screen.dart';
+import 'package:model_order_test/screen/order_screen.dart';
 
 void main() {
   runApp(const MyApp());
