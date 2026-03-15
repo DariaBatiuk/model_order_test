@@ -31,15 +31,14 @@ class OrderService {
         return Order.fromJson(json);
       }
 
-      if (response.statusCode == 400) {
-        String errorMessage = 'Error';
+      if (response.statusCode >= 400) {
+        String errorMessage = 'Failed to create order';
         try {
           final Map<String, dynamic> json =
               jsonDecode(response.body) as Map<String, dynamic>;
           errorMessage = json['message'] as String? ?? errorMessage;
-        } catch (_) {
-          throw ApiException(message: errorMessage);
-        }
+        } catch (_) {}
+        throw ApiException(message: errorMessage);
       }
 
       throw ApiException(message: 'Server error');
